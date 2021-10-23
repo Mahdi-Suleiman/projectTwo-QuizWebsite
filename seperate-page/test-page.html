@@ -68,9 +68,15 @@
             const element = sessionStorage.getItem(index);
             answersArray.push(JSON.parse(element));
         }
-        console.log(answersArray);
+
+        for (let index = 0; index < 10; index++) {
+            localStorage.removeItem(`${index}`);
+            localStorage.removeItem(`${10 + index}`);
+
+        }
+        // console.log(answersArray);
         showTable();
-        localStorage.clear();
+        // localStorage.clear();
 
 
 
@@ -114,7 +120,7 @@
                 }
             }
 
-            myTable.unshift(`<table style="display: table;">`);
+            myTable.unshift(`<table style="display: none;">`);
             myTable.push(`</table>`);
 
 

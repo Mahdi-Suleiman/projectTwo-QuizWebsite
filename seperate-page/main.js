@@ -35,8 +35,15 @@
 
         // finally combine our output list into one string of HTML and put it on the page
         quizContainer.innerHTML = output.join('');
+
+        //store answers to local storage
+        myQuestions.forEach((element, index) => {
+            const myJsonElemnt = JSON.stringify(element);
+            localStorage.setItem(10 + index, myJsonElemnt);
+        });
     }
-    const correctAnswersArray = [];
+    const trueOrFalseAnswersArray = [];
+    const CorrectAnswersRetrievedFromLocalStorage = [];
     function showResults() {
 
         // gather answer containers from our quiz
@@ -45,8 +52,15 @@
         // keep track of user's answers
         let numCorrect = 0;
 
+        for (let index = 0; index < 10; index++) {
+            const element = JSON.parse(localStorage.getItem(10 + index));
+            CorrectAnswersRetrievedFromLocalStorage.push(element);
+        }
+
         // for each question...
-        myQuestions.forEach((currentQuestion, questionNumber) => {
+        // myQuestions.forEach((currentQuestion, questionNumber) => {
+        CorrectAnswersRetrievedFromLocalStorage.forEach((currentQuestion, questionNumber) => {
+
 
             // find selected answer
             const answerContainer = answerContainers[questionNumber];
@@ -57,7 +71,7 @@
             if (userAnswer === currentQuestion.correctAnswer) {
                 // add to the number of correct answers
                 numCorrect++;
-                correctAnswersArray.push(true);
+                trueOrFalseAnswersArray.push(true);
 
 
                 // color the answers green
@@ -65,13 +79,13 @@
             }
             // if answer is wrong or blank
             else {
-                correctAnswersArray.push(false);
+                trueOrFalseAnswersArray.push(false);
 
                 // color the answers red
                 // answerContainers[questionNumber].style.color = 'red';
             }
             //Save to local then move it to next tab session then delete from local
-            localStorage.setItem(`${questionNumber}`, correctAnswersArray[questionNumber])
+            localStorage.setItem(`${questionNumber}`, trueOrFalseAnswersArray[questionNumber])
 
 
         });
@@ -100,7 +114,7 @@
     </tr>`);
 
         for (let index = 0; index < 10; index++) {
-            if (correctAnswersArray[index] === true) {
+            if (trueOrFalseAnswersArray[index] === true) {
                 myTable.push(`
         <tr>
         <td style="color: green">
