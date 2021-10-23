@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            position: relative;
+        }
+
+        table,
+        td,
+        tr {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        button {
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /*dont change it*/
+        canvas {
+            position: fixed;
+            width: 100%;
+            height: 100hv;
+            z-index: -100;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@0.9.0/dist/js-confetti.browser.js"></script>
+</head>
+
+<body>
+    <canvas id="custom_canvas"></canvas>
+    <button onclick="logout()">Logout</button>
+    <h1>Project Brief</h1>
+    </div>
+    <button onclick="toggleResult()">Show/Hide Result</button>
+    <div class="table-container">
+        <div id="answers-table"></div>
+    </div>
+
+    <div id="results"></div>
+
+
+    <script>
+        const answersArray = [];
+        let counter = 0;
+        for (let index = 0; index < localStorage.length; index++) {
+            const element = localStorage.getItem(index);
+            JSON.stringify(element);
+            sessionStorage.setItem(index, element);
+        }
+        for (let index = 0; index < 10; index++) {
+            const element = sessionStorage.getItem(index);
+            answersArray.push(JSON.parse(element));
+        }
+        console.log(answersArray);
+        showTable();
+        localStorage.clear();
+
+
+
+
+
+        function showTable() {
+            const myTable = [];
+            myTable.push(`
+        <tr>
+        <td>
+            Question
+        </td>
+        <td>
+            Answer
+        </td>
+    </tr>`);
+
+            for (let index = 0; index < 10; index++) {
+                if (answersArray[index] === true) {
+                    counter++;
+                    myTable.push(`
+        <tr style="color: green">
+        <td >
+            ${index + 1}
+        </td>
+        <td>
+            <i class="fa-solid fa-circle-check"></i>
+        </td>
+    </tr>`);
+                }
+                else {
+                    myTable.push(`
+                <tr style="color: red">
+                <td >
+                    ${index + 1}
+                </td>
+                <td>
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </td>
+            </tr>`);
+                }
+            }
+
+            myTable.unshift(`<table style="display: table;">`);
+            myTable.push(`</table>`);
+
+
+            const tableContainer = document.querySelector(".table-container");
+            tableContainer.innerHTML = myTable.join('');
+            document.querySelector("#results").innerHTML = `you answered ${counter} correct out of 10!`;
+
+            if (counter >= 5)
+                celebrate();
+        }
+        function toggleResult() {
+            const table = document.querySelector("table");
+            if (table.style.display === "table") {
+                table.style.display = "none";
+            }
+            else {
+                table.style.display = "table";
+            }
+        }
+
+        function logout() {
+            sessionStorage.clear();
+            window.close();
+            window.open('./index.html', '_blank');
+        }
+
+
+        /* celebration */
+        function celebrate() {
+
+            const canvas = document.getElementById('custom_canvas')
+            const jsConfetti = new JSConfetti({ canvas })
+            setTimeout(() => {
+                jsConfetti.addConfetti({
+                    confettiRadius: 6,
+                    confettiNumber: 800
+
+                    // emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🌸']
+                })
+            }, 500)
+
+            // jsConfetti.addConfetti()
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

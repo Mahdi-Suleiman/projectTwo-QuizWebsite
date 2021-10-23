@@ -10,7 +10,6 @@
 
                 // variable to store the list of possible answers
                 const answers = [];
-
                 // and for each available answer...
                 for (letter in currentQuestion.answers) {
 
@@ -37,7 +36,7 @@
         // finally combine our output list into one string of HTML and put it on the page
         quizContainer.innerHTML = output.join('');
     }
-
+    const correctAnswersArray = [];
     function showResults() {
 
         // gather answer containers from our quiz
@@ -58,20 +57,82 @@
             if (userAnswer === currentQuestion.correctAnswer) {
                 // add to the number of correct answers
                 numCorrect++;
+                correctAnswersArray.push(true);
+
 
                 // color the answers green
-                answerContainers[questionNumber].style.color = 'lightgreen';
+                // answerContainers[questionNumber].style.color = 'lightgreen';
             }
             // if answer is wrong or blank
             else {
+                correctAnswersArray.push(false);
+
                 // color the answers red
-                answerContainers[questionNumber].style.color = 'red';
+                // answerContainers[questionNumber].style.color = 'red';
             }
+            //Save to local then move it to next tab session then delete from local
+            localStorage.setItem(`${questionNumber}`, correctAnswersArray[questionNumber])
+
+
         });
 
         // show number of correct answers out of total
+        // showTable();
         resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+        // move to final page
+        window.open("./test-page.html", '_blank');
+
+        // window.location.href = ;
+
     }
+    function showTable() {
+        slides[currentSlide].classList.remove('active-slide');
+
+        const myTable = [];
+        myTable.push(`
+        <tr>
+        <td>
+            Question
+        </td>
+        <td>
+            Answer
+        </td>
+    </tr>`);
+
+        for (let index = 0; index < 10; index++) {
+            if (correctAnswersArray[index] === true) {
+                myTable.push(`
+        <tr>
+        <td style="color: green">
+            ${index + 1}
+        </td>
+        <td>
+            Correct
+        </td>
+    </tr>`);
+            }
+            else {
+                myTable.push(`
+                <tr>
+                <td style="color: red">
+                    ${index + 1}
+                </td>
+                <td>
+                    Wrong
+                </td>
+            </tr>`);
+            }
+        }
+        myTable.unshift(`<table>`);
+        myTable.push(`</table>`);
+
+
+        const tableContainer = document.querySelector(".table-container");
+        tableContainer.innerHTML = myTable.join('');
+    }
+
+
+
 
     function showSlide(n) {
         slides[currentSlide].classList.remove('active-slide');
@@ -95,9 +156,9 @@
 
     function showNextSlide() {
         let flag = false;
-        const test = document.querySelectorAll(`.question${currentSlide}`)
-        for (let index = 0; index < test.length; index++) {
-            if (test[index].checked == true) {
+        const isChecked = document.querySelectorAll(`.question${currentSlide}`)
+        for (let index = 0; index < isChecked.length; index++) {
+            if (isChecked[index].checked == true) {
                 flag = true;
             }
         }
