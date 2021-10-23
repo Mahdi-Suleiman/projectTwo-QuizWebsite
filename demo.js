@@ -4,6 +4,18 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
 
+const signUp= e =>{
+    e.preventDefault();
+  let username=document.getElementById('username').value;
+  let email=document.getElementById('email').value;
+  let password=document.getElementById('password').value;
+  localStorage.setItem('username',username);
+  localStorage.setItem('email',email);
+  localStorage.setItem('password',password);
+  
+  //   window.location.href="";
+  };
+
 form.addEventListener('submit', e => {
     e.preventDefault();
 
