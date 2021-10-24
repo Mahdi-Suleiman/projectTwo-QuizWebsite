@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="../assets/logo1.png">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="../css/quiz-style.css">
+  <title>Document</title>
+</head>
+
+<body onload="buildMyQuiz(0)">
+  <header>
+    <nav class="navbar">
+      <!-- Logo -->
+      <div>
+        <img src="../assets/logo1.png" alt="logo">
+      </div>
+      <div id="welcomingTag">
+        <!-- User Welcome -->
+      </div>
+
+      <!-- Sign-in Sign up Buttons -->
+      <div class="nav-btns">
+        <button onclick="logout()">Log-out</button>
+      </div>
+    </nav>
+  </header>
+  <main class="container">
+    <div class="quiz-attempt">
+      <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus tempora repellat eligendi iste porro,
+        voluptas id quas repellendus quaerat ab!</h2>
+    </div>
+    <div class="quiz">
+      <h3>Quiz</h3>
+      <input type="radio" id="answer1" name="qz" class="my-radio"></input>
+      <label for="answer1" id="label1">1</label>
+      <br>
+      <input type="radio" id="answer2" name="qz" class="my-radio"></input>
+      <label for="answer2" id="label2">2</label>
+      <br>
+      <input type="radio" id="answer3" name="qz" class="my-radio"></input>
+      <label for="answer3" id="label3">3</label>
+      <br>
+      <input type="radio" id="answer4" name="qz" class="my-radio"></input>
+      <label for="answer4" id="label4">4</label>
+      <br>
+      <button class="next" onclick="showNextQuestion() ">Next</button>
+      <button id="submit-button" onclick="submitExamButton()">Submit</button>
+    </div>
+  </main>
+  <footer>
+    <div class="end-section">
+      <div class="connect">
+        <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fab fa-twitter-square"></i></a>
+      </div>
+      <div class="copy">
+        <p>Copyright ©2021 All rights reserved | This website is powered by</p>
+        <span><img src="../assets/logo1.png"></span>
+      </div>
+    </div>
+  </footer>
+  <script src="../javascript/quiz.js"></script>
+</body>
+
+</html>

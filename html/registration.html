@@ -6,15 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GAMAR Registration</title>
-  <link rel="shortcut icon" href="./logo1.png">
-  <!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" /> -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
-    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="shortcut icon" href="../assets/logo1.png">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-
-  <link rel="stylesheet" href="registration-style.css">
+  <link rel="stylesheet" href="../css/registration-style.css">
 </head>
 
 <body>
@@ -30,32 +26,26 @@
       </div>
       <!-- Sign-in Sign up Buttons -->
       <div class="nav-btns">
-        <button>Sign-in</button>
-        <button>Sign-out</button>
-      </div>
-      <div class="burger-menu">
-        <i class="fa-solid fa-bars"></i>
+        <button onclick="logout()">Log-out</button>
       </div>
     </nav>
   </header>
-
-
   <main class="main-cont">
     <div class="container">
       <div class="header">
         <h2>Create Account</h2>
       </div>
-      <form id="form" class="form" onsubmit="signUp(event)">
+      <form id="form" class="form">
         <div class="form-control">
           <label for="username">Username</label>
-          <input type="text" id="username" />
+          <input type="text" id="username" name="username" />
           <i class="fas fa-check-circle"></i>
           <i class="fas fa-exclamation-circle"></i>
           <small>Error message</small>
         </div>
         <div class="form-control">
           <label for="username">Email</label>
-          <input type="email" id="email" />
+          <input type="text" id="email" />
           <i class="fas fa-check-circle"></i>
           <i class="fas fa-exclamation-circle"></i>
           <small>Error message</small>
@@ -74,30 +64,24 @@
           <i class="fas fa-exclamation-circle"></i>
           <small>Error message</small>
         </div>
-        <button>Submit</button>
+        <button class="sub-btn">Submit</button>
       </form>
     </div>
   </main>
   <footer>
     <div class="end-section">
       <div class="connect">
-        <a href="https://www.linkedin.com/in/mahdi-suleiman/" target="_blank"><i
-            class="fa-brands fa-linkedin-in"></i></a>
-        <a href="https://github.com/Mahdi-Suleiman/projectTwo-QuizGame-" target="_blank"><i
-            class="fa-brands fa-github"></i></a>
-        <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fab fa-twitter-square"></i></a>
       </div>
-
       <div class="copy">
         <p>Copyright ©2021 All rights reserved | This website is powered by</p>
-        <span><img src="./logo1.png" alt="logo"></span>
+        <span><img src="./logo1.png"></span>
       </div>
     </div>
-    <div class="form-container">
-      form
-    </div>
   </footer>
-  <script src="demo.js"></script>
+  <script src="../javascript/regestration.js"></script>
 </body>
 
 </html>

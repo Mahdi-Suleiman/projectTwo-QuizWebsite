@@ -11,6 +11,10 @@ body {
     background-size:cover; */
 }
 
+#submit-button {
+  display: none;
+}
+
 /* Navbar */
 
 .navbar {
@@ -18,7 +22,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 10vh;
 }
 
 .navbar img {
@@ -27,14 +30,11 @@ body {
   margin-left: 1em;
 }
 
-/*mahdi*/
-
 .nav-btns {
   display: flex;
-  width: 30%;
+  /* width: 30%; */
   padding: 1em;
   justify-content: flex-end;
-  display: none;
 }
 
 .nav-btns button {
@@ -53,16 +53,6 @@ body {
   transform: scale(1.10);
   transition: none;
 }
-
-/*<Mahdi>*/
-
-.burger-menu {
-  margin-right: 1em;
-  font-size: 1.5em;
-  color: white;
-}
-
-/*</Mahdi>*/
 
 /* body */
 
@@ -108,7 +98,7 @@ body {
 
 .quiz {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  display: none;
+  margin: 5em 0em 5em 0em;
 }
 
 .quiz h3 {
@@ -122,30 +112,18 @@ body {
   padding: 20px 40px;
 }
 
-.next {}
-
-button:hover {
+.quiz button {
+  margin: 2em 2em;
+  padding: 0.5em 4em;
+  font-weight: 600;
+  background-color: #42B72A;
+  border: 2px solid #42B72A;
+  color: white;
   cursor: pointer;
-  filter: brightness(90%);
+  border-radius: 4px;
 }
 
 /* Footer */
-
-/*<mahdi>*/
-
-footer {
-  background-color: #1877F2;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
-  width: 100%;
-}
-
-footer .form-container {
-  width: 100%;
-}
-
-/*</mahdi>*/
 
 .end-section {
   background-color: #1877F2;
@@ -179,32 +157,4 @@ footer .form-container {
   justify-content: center;
   align-items: center;
   color: white;
-}
-
-/*Tablet View*/
-
-@media all and (min-width: 481px) and (max-width: 768px) {
-  footer {
-    grid-template-columns: unset;
-    grid-template-rows: unset;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-  }
-}
-
-/*Dekstop View*/
-
-@media all and (min-width: 769px) {
-  .nav-btns {
-    display: flex;
-  }
-  .burger-menu {
-    display: none;
-  }
-  footer {
-    grid-template-columns: unset;
-    grid-template-rows: unset;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-  }
 }

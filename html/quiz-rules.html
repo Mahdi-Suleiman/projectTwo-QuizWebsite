@@ -5,14 +5,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="./logo1.png">
-  <!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>   -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
-    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <link rel="stylesheet" href="quiz-style.css">
-  <title>Document</title>
+  <link rel="shortcut icon" href="../assets/logo1.png">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="../css/quiz-rules-style.css">
+  <title>GAMAR Quiz</title>
 </head>
 
 <body>
@@ -20,19 +17,14 @@
     <nav class="navbar">
       <!-- Logo -->
       <div>
-        <img src="./logo1.png" alt="logo">
+        <img src="../assets/logo1.png" alt="logo">
       </div>
-      <!-- User Welcome -->
-      <div>
-
+      <div id="welcomingTag">
+        <!-- User Welcome -->
       </div>
       <!-- Sign-in Sign up Buttons -->
       <div class="nav-btns">
-        <button>Sign-in</button>
-        <button>Sign-out</button>
-      </div>
-      <div class="burger-menu">
-        <i class="fa-solid fa-bars"></i>
+        <button onclick="logout()">Log-out</button>
       </div>
     </nav>
   </header>
@@ -41,6 +33,16 @@
       <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus tempora repellat eligendi iste porro,
         voluptas id quas repellendus quaerat ab!</h2>
     </div>
+    <div class="quiz-rules">
+      <h3>RULES</h3>
+      <h3>Rules</h3>
+      <h3>Rules</h3>
+      <h3>Rules</h3>
+      <h3>Rules</h3>
+    </div>
+    <button class="quiz-btn">
+      Start Quiz
+    </button>
     <div class="quiz">
       <h3>Quiz</h3>
       <input type="radio" id="answer1" name="qz"></input>
@@ -61,22 +63,17 @@
   <footer>
     <div class="end-section">
       <div class="connect">
-        <a href="https://www.linkedin.com/in/mahdi-suleiman/" target="_blank"><i
-            class="fa-brands fa-linkedin-in"></i></a>
-        <a href="https://github.com/Mahdi-Suleiman/projectTwo-QuizGame-" target="_blank"><i
-            class="fa-brands fa-github"></i></a>
-        <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fab fa-twitter-square"></i></a>
       </div>
-
       <div class="copy">
         <p>Copyright ©2021 All rights reserved | This website is powered by</p>
-        <span><img src="./logo1.png" alt="logo"></span>
+        <span><img src="../assets/logo1.png"></span>
       </div>
     </div>
-    <div class="form-container">
-      form
-    </div>
   </footer>
+  <script src="../javascript/quiz-rules.js"></script>
 </body>
 
 </html>
