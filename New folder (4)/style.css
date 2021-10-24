@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+img {
+    float: right;
+    
+  }
+  #first-page-container{
+      display: flex;
+      
+  }
+  #first-page-image{
+      display: inline-block;
+  }
+  #first-page-text{
+    display: inline-block;
+}
