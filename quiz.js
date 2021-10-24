@@ -3,5 +3,5 @@ const quizRules = document.querySelector('.quiz-rules');
 const quiz = document.querySelector('.quiz');
 
 btn.addEventListener('click', ()=>{
-  location.href="quiz.html";
+  window.location.href="quiz.html";
 });

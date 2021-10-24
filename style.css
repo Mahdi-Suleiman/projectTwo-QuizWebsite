@@ -136,9 +136,26 @@ body {
     visibility: visible;
 }
 
-.form button {
+.form .log-btn {
     background-color: #1877F2;
     border: 2px solid #1877F2;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.font {
+  margin-top:1em;
+}
+
+.form .reg-btn {
+  background-color: #38A722;
+    border: 2px solid #38A722;
     border-radius: 4px;
     color: #fff;
     display: block;
