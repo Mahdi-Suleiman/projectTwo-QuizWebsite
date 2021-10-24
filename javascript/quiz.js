@@ -46,13 +46,9 @@ function buildMyQuiz(myCounter) {
 function logout() {
     sessionStorage.clear();
     window.close();
-    window.open('./index.html', '_blank');
+    window.open('../html/index.html', '_blank');
 }
-function logout() {
-    sessionStorage.clear();
-    window.close();
-    window.open('./index.html', '_blank');
-}
+
 function showNextQuestion() {
     let userChoice = 0;
 
@@ -80,7 +76,7 @@ function showNextQuestion() {
     buildMyQuiz(currentQuestionCounter);
 }
 function submitExamButton() {
-    window.open("./result-page.html", '_blank');
+    window.open("../html/result-page.html", '_blank');
 }
 
 const myQuestions = [

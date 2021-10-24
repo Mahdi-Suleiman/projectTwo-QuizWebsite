@@ -15,7 +15,7 @@ form.addEventListener('submit', e => {
 function logout() {
     sessionStorage.clear();
     window.close();
-    window.open('./index.html', '_blank');
+    window.open('../html/index.html', '_blank');
 }
 function checkInputs() {
     // trim to remove the whitespaces

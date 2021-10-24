@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@0.9.0/dist/js-confetti.browser.js"></script>
 </head>
 
-<body>
+<body onload="showTable()">
 
     <header>
         <nav class="navbar">
@@ -28,8 +28,7 @@
             </div>
             <!-- Sign-in Sign up Buttons -->
             <div class="nav-btns">
-                <button>Sign-in</button>
-                <button>Sign-out</button>
+                <button onclick="logout()">Logout</button>
             </div>
         </nav>
     </header>

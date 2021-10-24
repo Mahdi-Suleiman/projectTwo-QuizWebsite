@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+button:hover {
+  filter: brightness(80%);
+  cursor: pointer;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   /* background-image:url(./wave-removebg.png);
@@ -42,12 +47,6 @@ body {
   font-weight: bold;
   color: black;
   border: none;
-}
-
-.nav-btns button:hover {
-  border-bottom: 1px #f3f3f3 solid;
-  transform: scale(1.10);
-  transition: none;
 }
 
 /* body */

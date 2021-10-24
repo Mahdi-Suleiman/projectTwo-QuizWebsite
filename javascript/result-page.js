@@ -1,3 +1,5 @@
+const navbar = document.querySelector(".navbar");
+const footer = document.querySelector(".end-section");
 const answersArray = [];
 const h1 = document.querySelector("#pass-fail-div");
 let counter = 0;
@@ -5,15 +7,13 @@ for (let index = 0; index < 10; index++) {
     const element = localStorage.getItem(`A${index + 1}`);
     JSON.stringify(element);
     sessionStorage.setItem(`A${index}`, element);
+    localStorage.removeItem(`A${index + 1}`);
 }
 for (let index = 0; index < 10; index++) {
     const element = sessionStorage.getItem(`A${index + 1}`);
     answersArray.push(JSON.parse(element));
 }
 console.log(answersArray);
-showTable();
-
-
 
 
 
@@ -23,7 +23,7 @@ function showTable() {
     const myTable = [];
     myTable.push(`
     <thead>
-<tr>
+<tr class="table-thead">
 <td>
     Question
 </td>
@@ -66,15 +66,27 @@ function showTable() {
     const tableContainer = document.querySelector(".table-container");
     tableContainer.innerHTML = myTable.join('');
     document.querySelector("#results").innerHTML = `you answered ${counter} correct out of 10!`;
+    // counter = 10;
+    const tr = document.querySelector(".table-thead");
+
     if (counter >= 5) {
         celebrate();
         h1.innerHTML = 'Pass!';
         h1.style.color = 'green';
+        navbar.style.backgroundColor = "green";
+        footer.style.backgroundColor = "green";
+        tr.style.backgroundColor = "green";
+
+
 
     }
     else {
         h1.innerHTML = 'Failed!';
         h1.style.color = '#B8293D';
+        navbar.style.backgroundColor = "#B8293D";
+        footer.style.backgroundColor = "#B8293D";
+        tr.style.backgroundColor = `#B8293D`;
+
 
     }
 }
@@ -91,7 +103,7 @@ function toggleResult() {
 function logout() {
     sessionStorage.clear();
     window.close();
-    window.open('./index.html', '_blank');
+    window.open('../html/index.html', '_blank');
 }
 
 
@@ -102,10 +114,10 @@ function celebrate() {
     const jsConfetti = new JSConfetti({ canvas })
     setTimeout(() => {
         jsConfetti.addConfetti({
-            confettiRadius: 1,
-            confettiNumber: 50
+            confettiRadius: 6,
+            confettiNumber: 800
 
-            , emojis: ['<header>', '<frontend>']
+            // , emojis: ['<header>', '<frontend>']
         })
     }, 500)
 

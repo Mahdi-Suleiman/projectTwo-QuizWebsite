@@ -14,5 +14,5 @@ welcomingTag.innerHTML = `Welcome ${usernameToShow}`;
 function logout() {
   sessionStorage.clear();
   window.close();
-  window.open('./index.html', '_blank');
+  window.open('../html/index.html', '_blank');
 }

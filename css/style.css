@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+button:hover {
+  filter: brightness(80%);
+  cursor: pointer;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   /* background-image:url(./wave-removebg.png);
@@ -42,10 +47,6 @@ body {
   font-weight: bold;
   border: none;
   background-color: #38A722;
-}
-
-.nav-btns button:hover {
-  filter: brightness(80%);
 }
 
 /* body */
@@ -156,9 +157,11 @@ body {
 .font {
   margin-top: 1em;
 }
+
 button:hover {
   filter: brightness(80%);
 }
+
 .form .reg-btn {
   background-color: #38A722;
   border: 2px solid #38A722;
