@@ -15,7 +15,7 @@ function signIn(e) {
   else {
 
     document.cookie = `${username}; expires=Thu, 18 Dec 2099 12:00:00 UTC`;
-    window.open("./quiz-rules.html")
+    window.open("../html/quiz-rules.html")
   }
 }
 

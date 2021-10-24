@@ -33,7 +33,7 @@ background-size:cover; */
 
 .navbar img {
     width: 4em;
-    height: 4em;
+    height: 2em;
     margin-left: 1em;
 }
 
@@ -141,8 +141,8 @@ background-size:cover; */
 }
 
 .end-section img {
-    height: 5em;
-    width: 5em;
+    width: 4em;
+    height: 2em;
 }
 
 .connect {

@@ -38,16 +38,14 @@ body {
   padding: 0.5em 1em;
   border-radius: 0.3em;
   cursor: pointer;
-  background-color: white;
+  color: white;
   font-weight: bold;
-  color: black;
   border: none;
+  background-color: #38A722;
 }
 
 .nav-btns button:hover {
-  border-bottom: 1px #f3f3f3 solid;
-  transform: scale(1.10);
-  transition: none;
+  filter: brightness(80%);
 }
 
 /* body */
@@ -152,12 +150,15 @@ body {
   padding: 10px;
   margin-top: 20px;
   width: 100%;
+  cursor: pointer;
 }
 
 .font {
   margin-top: 1em;
 }
-
+button:hover {
+  filter: brightness(80%);
+}
 .form .reg-btn {
   background-color: #38A722;
   border: 2px solid #38A722;
@@ -169,6 +170,7 @@ body {
   padding: 10px;
   margin-top: 20px;
   width: 100%;
+  cursor: pointer;
 }
 
 /* Footer */
