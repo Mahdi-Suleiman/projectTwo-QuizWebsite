@@ -51,10 +51,9 @@ body {
   border: none;
 }
 
-/* .main-cont {
-  align-items: center;
-  justify-content: center;
-} */
+.main-cont {
+  min-height: 76.5vh;
+}
 
 .container {
   background-color: #fff;
@@ -65,7 +64,7 @@ body {
   max-width: 100%;
   margin: auto;
   margin-top: 5em;
-  margin-bottom: 5em;
+  /* margin-bottom: 5em; */
 }
 
 .header {

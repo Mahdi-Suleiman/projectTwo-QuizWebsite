@@ -51,6 +51,10 @@ body {
 
 /* body */
 
+.main-cont {
+  min-height: 76.5vh;
+}
+
 .container {
   background-color: #fff;
   border-radius: 5px;

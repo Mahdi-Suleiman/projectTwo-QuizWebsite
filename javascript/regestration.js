@@ -6,7 +6,7 @@ const password2 = document.getElementById('password2');
 const usernamePattern = /^[A-Za-z]{3,13}$/;
 
 
-form.addEventListener('keyup', e => {
+form.addEventListener('submit', e => {
     e.preventDefault();
 
     checkInputs();
@@ -134,7 +134,6 @@ const signUp = e => {
             title: 'Oops...',
             text: 'Username already registered!'
         })
-        // e.preventDefault();
-
+        e.preventDefault();
     }
 }
