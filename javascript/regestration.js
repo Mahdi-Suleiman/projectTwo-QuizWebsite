@@ -6,7 +6,7 @@ const password2 = document.getElementById('password2');
 const usernamePattern = /^[A-Za-z]{3,13}$/;
 
 
-form.addEventListener('submit', e => {
+form.addEventListener('keyup', e => {
     e.preventDefault();
 
     checkInputs();
@@ -16,8 +16,9 @@ function logout() {
     sessionStorage.clear();
     localStorage.removeItem('logged');
     window.close();
-    window.open('../html/index.html', '_blank');
+    window.open('../html/sign-in.html');
 }
+
 function checkInputs() {
     // trim to remove the whitespaces
     const usernameValue = username.value.trim();
@@ -33,14 +34,7 @@ function checkInputs() {
         setSuccessFor(username);
         flags.push(true);
     }
-    // jhgfufuyf
 
-    // if(usernameValue.include(usernamePattern)){
-    //     setErrorFor(username, 'Username must be in alphabets (between 3 to 13 characters)');
-    // }else{
-    //     setSuccessFor(username);
-    // }
-    //iuguiyguyfgu
     if (emailValue === '') {
         setErrorFor(email, 'Email cannot be blank');
     } else if (!isEmail(emailValue)) {
@@ -83,7 +77,7 @@ function checkInputs() {
     }
 
     if (flags.length === 6) {
-        signUp()
+        signUp();
     }
 
 }
@@ -123,11 +117,24 @@ const signUp = e => {
         localStorage.setItem(`formData`, JSON.stringify(formData));
         document.querySelector('form').reset();
         document.getElementById('username').focus();
-        alert("Account Created.\n\nPlease Sign In using the link below.");
-        window.location.href = "index.html";
+        Swal.fire(
+            'Good job!',
+            'Account Created!',
+            'success'
+        ).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "sign-in.html";
+            }
+        })
+
     }
     else {
-        alert("Ooopppssss... Duplicate found!!!\nYou have already signed up");
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Username already registered!'
+        })
+        // e.preventDefault();
+
     }
-    e.preventDefault();
 }

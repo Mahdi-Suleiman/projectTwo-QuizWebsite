@@ -10,7 +10,11 @@ function signIn(e) {
   console.log(exist)
   if (!exist) {
     e.preventDefault();
-    alert("Incorrect login credentials");
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Incorrect credintials!'
+    })
   }
   else {
 
@@ -21,7 +25,7 @@ function signIn(e) {
 }
 
 function goToRegisteration() {
-  window.open("../html/registration.html", "_blank");
+  window.open("../html/registration.html");
 }
 // const btn = document.querySelector('.reg-btn').addEventListener('click', ()=>{
 //     window.location.href = "registration.html";

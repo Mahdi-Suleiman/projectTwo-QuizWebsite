@@ -5,15 +5,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GAMAR Registration</title>
   <link rel="shortcut icon" href="../assets/logo1.png">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-  <link rel="stylesheet" href="../css/registration-style.css">
+  <link rel="stylesheet" href="../css/sign-in-style.css">
   <!-- sweet alert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
+  <title>GAMAR Homepage</title>
 </head>
 
 <body>
@@ -23,35 +23,29 @@
       <div>
         <img src="../assets/logo1.png" alt="logo">
       </div>
-      <!-- User Welcome -->
       <div>
-
+        <!-- User Welcome -->
       </div>
       <!-- Sign-in Sign up Buttons -->
       <div class="nav-btns">
-        <button onclick="logout()">Login</button>
+        <button onclick="goToRegisteration()">Register</button>
+        <!-- <button>Sign out</button> -->
       </div>
     </nav>
   </header>
+  <!-- body -->
   <main class="main-cont">
     <div class="container">
       <div class="header">
-        <h2>Create Account</h2>
+        <h2>Sign in</h2>
       </div>
-      <form id="form" class="form">
+      <form id="form" class="form" onsubmit="signIn(event)">
         <div class="form-control">
           <label for="username">Username</label>
-          <input type="text" id="username" name="username" />
+          <input type="text" id="username" />
           <i class="fas fa-check-circle"></i>
           <i class="fas fa-exclamation-circle"></i>
-          <small>Error message</small>
-        </div>
-        <div class="form-control">
-          <label for="username">Email</label>
-          <input type="text" id="email" />
-          <i class="fas fa-check-circle"></i>
-          <i class="fas fa-exclamation-circle"></i>
-          <small>Error message</small>
+          <small id="result">Error message</small>
         </div>
         <div class="form-control">
           <label for="password">Password</label>
@@ -60,17 +54,13 @@
           <i class="fas fa-exclamation-circle"></i>
           <small>Error message</small>
         </div>
-        <div class="form-control">
-          <label for="passwordcheck">Repeat Password</label>
-          <input type="password" id="password2" />
-          <i class="fas fa-check-circle"></i>
-          <i class="fas fa-exclamation-circle"></i>
-          <small>Error message</small>
-        </div>
-        <button class="sub-btn">Submit</button>
+        <button type="submit" class="log-btn">Sign in</button>
+        <p class="font">Don't have an account?</p>
+        <button type="button" class="reg-btn" onclick="goToRegisteration()">Register</button>
       </form>
     </div>
   </main>
+  <!-- footer -->
   <footer>
     <div class="end-section">
       <div class="connect">
@@ -84,7 +74,7 @@
       </div>
     </div>
   </footer>
-  <script src="../javascript/regestration.js"></script>
+  <script src="../javascript/login-page.js"></script>
 </body>
 
 </html>

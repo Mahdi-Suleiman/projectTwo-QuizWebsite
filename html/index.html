@@ -6,13 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="../assets/logo1.png">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <title>GAMAR Website</title>
+  <!-- font awesome cdn link  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- custom css file link  -->
   <link rel="stylesheet" href="../css/style.css">
-  <title>GAMAR Homepage</title>
 </head>
 
 <body>
+
+  <!-- header section starts  -->
+
   <header>
     <nav class="navbar">
       <!-- Logo -->
@@ -29,34 +33,45 @@
       </div>
     </nav>
   </header>
-  <!-- body -->
-  <main class="main-cont">
-    <div class="container">
-      <div class="header">
-        <h2>Sign in</h2>
-      </div>
-      <form id="form" class="form" onsubmit="signIn(event)">
-        <div class="form-control">
-          <label for="username">Username</label>
-          <input type="text" id="username" />
-          <i class="fas fa-check-circle"></i>
-          <i class="fas fa-exclamation-circle"></i>
-          <small id="result">Error message</small>
-        </div>
-        <div class="form-control">
-          <label for="password">Password</label>
-          <input type="password" id="password" />
-          <i class="fas fa-check-circle"></i>
-          <i class="fas fa-exclamation-circle"></i>
-          <small>Error message</small>
-        </div>
-        <button type="submit" class="log-btn">Sign in</button>
-        <p class="font">Don't have an account?</p>
-        <button type="button" class="reg-btn" onclick="goToRegisteration()">Register</button>
-      </form>
+
+  <!-- header section ends -->
+
+  <!-- home section starts  -->
+
+  <section class="home" id="home">
+
+    <div class="image">
+      <img src="../assets/How does Web Hosting Help you in Branding your Business_.jfif" alt="img">
     </div>
-  </main>
-  <!-- footer -->
+
+    <div class="content">
+      <h3>Welcome to GAMAR website.</h3>
+      <p>Login to attempt the quiz.</p>
+      <a href="#" type="button" class="btn" onclick="goToSignin()"> login</a>
+    </div>
+
+  </section>
+
+
+  <!-- about section starts  -->
+
+  <section class="about" id="about">
+
+    <h1 class="heading"> <span>about</span> us </h1>
+
+    <div class="row">
+
+      <div class="image">
+        <img src="../assets/img-main.jfif" alt="">
+      </div>
+      <div class="content">
+        <h3>GAMAR</h3>
+        <p>GAMAR is a group of web developers. Established by 5 determined super programmers to ensure the highest
+          qualityand fast delivery to the IT field.</p>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="end-section">
       <div class="connect">
@@ -70,7 +85,7 @@
       </div>
     </div>
   </footer>
-  <script src="../javascript/login-page.js"></script>
+  <script src="../javascript/main.js"></script>
 </body>
 
 </html>
