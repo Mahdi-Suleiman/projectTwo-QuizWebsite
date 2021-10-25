@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+table tr td {
+    width: 10px;
+}
+
 #pass-fail-div {
     margin-top: 1em;
 }
@@ -52,6 +56,10 @@ background-size:cover; */
 }
 
 /* Navbar */
+
+nav {
+    background-color: #B8293D;
+}
 
 .navbar {
     background-color: #B8293D;
@@ -155,6 +163,10 @@ background-size:cover; */
 
 /* Footer */
 
+footer {
+    background-color: #B8293D;
+}
+
 .end-section {
     background-color: #B8293D;
     text-align: center;
@@ -174,11 +186,13 @@ background-size:cover; */
     margin: auto;
     width: 50%;
     justify-content: space-between;
+    /* margin: 1em 0; */
+    /* margin-top: 1em; */
 }
 
 .connect i {
     font-size: 2em;
-    margin-top: 1em;
+    margin: 1em 0;
     color: white;
 }
 
@@ -212,7 +226,7 @@ canvas {
     margin: 25px 0;
     font-size: 0.9em;
     font-family: sans-serif;
-    min-width: 400px;
+    min-width: 25em;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -239,6 +253,11 @@ canvas {
     background-color: #f3f3f3;
 }
 
-.styled-table tbody tr:last-of-type {
-    /* border-bottom: 2px solid #009879; */
+@media all and (max-width: 400px) {
+    .styled-table {
+        min-width: unset;
+    }
+    .connect i {
+        margin: 0.5em 0;
+    }
 }

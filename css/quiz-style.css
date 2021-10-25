@@ -167,3 +167,26 @@ body {
   align-items: center;
   color: white;
 }
+
+@media all and (max-width: 400px) {
+  .navbar {
+    font-size: 16px;
+  }
+  .container {
+    font-size: 80%;
+    justify-content: center;
+    min-height: 77vh;
+  }
+  .quiz input {
+    margin: 0.5em;
+    padding: unset;
+  }
+  .quiz {
+    width: 300px;
+    justify-self: center;
+    align-self: center;
+  }
+  #welcomingTag {
+    font-size: 1em;
+  }
+}
