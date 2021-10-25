@@ -14,6 +14,7 @@ form.addEventListener('submit', e => {
 });
 function logout() {
     sessionStorage.clear();
+    localStorage.removeItem('logged');
     window.close();
     window.open('../html/index.html', '_blank');
 }
@@ -116,8 +117,10 @@ const signUp = e => {
         );
 
     if (!exist) {
-        formData.push({ username, email, password });
-        localStorage.setItem('formData', JSON.stringify(formData));
+        // get length of registered users
+        const attempt = false;
+        formData.push({ username, email, password, attempt });
+        localStorage.setItem(`formData`, JSON.stringify(formData));
         document.querySelector('form').reset();
         document.getElementById('username').focus();
         alert("Account Created.\n\nPlease Sign In using the link below.");

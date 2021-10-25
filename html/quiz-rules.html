@@ -9,6 +9,10 @@
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <link rel="stylesheet" href="../css/quiz-rules-style.css">
+  <!-- sweet alert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+
   <title>GAMAR Quiz</title>
 </head>
 
@@ -24,41 +28,25 @@
       </div>
       <!-- Sign-in Sign up Buttons -->
       <div class="nav-btns">
-        <button onclick="logout()">Log-out</button>
+        <button onclick="logout()">Logout</button>
       </div>
     </nav>
   </header>
   <main class="container">
     <div class="quiz-attempt">
-      <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus tempora repellat eligendi iste porro,
-        voluptas id quas repellendus quaerat ab!</h2>
+      <h2>Exam Brief: You are currently attempting a quiz for posotion: <span>Front-end developer</span></h2>
     </div>
     <div class="quiz-rules">
-      <h3>RULES</h3>
-      <h3>Rules</h3>
-      <h3>Rules</h3>
-      <h3>Rules</h3>
-      <h3>Rules</h3>
+      <h2><span>RULES:</span></h2>
+      <h3>1) You have ten question to answer.</h3>
+      <h3>2) Ones you select your answer, it can't be undone.</h3>
+      <h3>3) You can see your result(true or false).</h3>
+      <h3>4) You can attempt the exam once.</h3>
+      <h3>5) You have only <span>10 minutes</span> to attempt.</h3>
     </div>
-    <button class="quiz-btn">
+    <button class="quiz-btn" onclick="oneTimeAttemptCheck()">
       Start Quiz
     </button>
-    <div class="quiz">
-      <h3>Quiz</h3>
-      <input type="radio" id="answer1" name="qz"></input>
-      <label for="answer1">1</label>
-      <br>
-      <input type="radio" id="answer2" name="qz"></input>
-      <label for="answer2">2</label>
-      <br>
-      <input type="radio" id="answer3" name="qz"></input>
-      <label for="answer3">3</label>
-      <br>
-      <input type="radio" id="answer4" name="qz"></input>
-      <label for="answer4">4</label>
-      <br>
-      <button class="next">Next</button>
-    </div>
   </main>
   <footer>
     <div class="end-section">

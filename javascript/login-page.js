@@ -6,7 +6,7 @@ function signIn(e) {
   let username = document.getElementById('username').value, password = document.getElementById('password').value;
   let formData = JSON.parse(localStorage.getItem('formData')) || [];
   let exist = formData.length &&
-    JSON.parse(localStorage.getItem('formData')).some(data => data.username.toLowerCase() == username && data.password.toLowerCase() == password);
+    JSON.parse(localStorage.getItem(`formData`)).some(data => data.username.toLowerCase() == username && data.password.toLowerCase() == password);
   console.log(exist)
   if (!exist) {
     e.preventDefault();
@@ -15,6 +15,7 @@ function signIn(e) {
   else {
 
     document.cookie = `${username}; expires=Thu, 18 Dec 2099 12:00:00 UTC`;
+    localStorage.setItem('logged', `${username}`)
     window.open("../html/quiz-rules.html")
   }
 }

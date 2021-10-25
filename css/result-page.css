@@ -4,6 +4,17 @@
     box-sizing: border-box;
 }
 
+#pass-fail-div {
+    margin-top: 1em;
+}
+
+#show-hide-button {
+    /* border: 1px solid black; */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    font-weight: lighter;
+}
+
 button {
     margin: 0 0.5em;
     padding: 0.5em 1em;
@@ -25,6 +36,8 @@ button:hover {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    min-height: 80vh;
+    gap: 1em;
 }
 
 #submit-button {
@@ -48,8 +61,8 @@ background-size:cover; */
 }
 
 .navbar img {
-    width: 4em;
-    height: 2em;
+    width: 6em;
+    height: 3em;
     margin-left: 1em;
 }
 
@@ -227,5 +240,5 @@ canvas {
 }
 
 .styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    /* border-bottom: 2px solid #009879; */
 }

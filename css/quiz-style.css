@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+.quiz-attempt span {
+  color: #1877F2;
+}
+
+#welcomingTag {
+  color: white;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
 button:hover {
   filter: brightness(80%);
   cursor: pointer;
@@ -30,14 +40,13 @@ body {
 }
 
 .navbar img {
-  width: 4em;
-  height: 2em;
+  width: 6em;
+  height: 3em;
   margin-left: 1em;
 }
 
 .nav-btns {
   display: flex;
-  /* width: 30%; */
   padding: 1em;
   justify-content: flex-end;
 }
@@ -47,9 +56,9 @@ body {
   padding: 0.5em 1em;
   border-radius: 0.3em;
   cursor: pointer;
-  background-color: white;
+  background-color: #38A722;
   font-weight: bold;
-  color: black;
+  color: white;
   border: none;
 }
 
@@ -61,6 +70,7 @@ body {
   width: 50%;
   margin: auto;
   margin-top: 2em;
+  min-height: 75vh;
 }
 
 .quiz-attempt {}

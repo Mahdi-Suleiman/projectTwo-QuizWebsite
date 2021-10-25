@@ -45,10 +45,10 @@ function buildMyQuiz(myCounter) {
 }
 function logout() {
     sessionStorage.clear();
+    localStorage.removeItem('logged');
     window.close();
     window.open('../html/index.html', '_blank');
 }
-
 function showNextQuestion() {
     let userChoice = 0;
 

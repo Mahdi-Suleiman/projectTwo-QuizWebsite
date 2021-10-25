@@ -13,9 +13,7 @@ for (let index = 0; index < 10; index++) {
     const element = sessionStorage.getItem(`A${index + 1}`);
     answersArray.push(JSON.parse(element));
 }
-console.log(answersArray);
-
-
+// console.log(answersArray);
 
 
 
@@ -65,8 +63,7 @@ function showTable() {
 
     const tableContainer = document.querySelector(".table-container");
     tableContainer.innerHTML = myTable.join('');
-    document.querySelector("#results").innerHTML = `you answered ${counter} correct out of 10!`;
-    // counter = 10;
+    document.querySelector("#results").innerHTML = `You answered ${counter} correct out of 10!`;
     const tr = document.querySelector(".table-thead");
 
     if (counter >= 5) {
@@ -76,9 +73,6 @@ function showTable() {
         navbar.style.backgroundColor = "green";
         footer.style.backgroundColor = "green";
         tr.style.backgroundColor = "green";
-
-
-
     }
     else {
         h1.innerHTML = 'Failed!';
@@ -86,8 +80,6 @@ function showTable() {
         navbar.style.backgroundColor = "#B8293D";
         footer.style.backgroundColor = "#B8293D";
         tr.style.backgroundColor = `#B8293D`;
-
-
     }
 }
 function toggleResult() {
@@ -102,10 +94,10 @@ function toggleResult() {
 
 function logout() {
     sessionStorage.clear();
+    localStorage.removeItem('logged');
     window.close();
     window.open('../html/index.html', '_blank');
 }
-
 
 /* celebration */
 function celebrate() {
