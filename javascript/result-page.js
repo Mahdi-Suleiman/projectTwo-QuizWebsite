@@ -3,6 +3,8 @@ const footer = document.querySelector(".end-section");
 const answersArray = [];
 const h1 = document.querySelector("#pass-fail-div");
 let counter = 0;
+
+//move correct answers from local storage to session storage
 for (let index = 0; index < 10; index++) {
     const element = localStorage.getItem(`A${index + 1}`);
     JSON.stringify(element);

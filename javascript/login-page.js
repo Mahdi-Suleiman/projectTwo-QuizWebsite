@@ -2,7 +2,7 @@
 
 
 function signIn(e) {
-
+  //input field.lowercase()
   let username = document.getElementById('username').value, password = document.getElementById('password').value;
   let formData = JSON.parse(localStorage.getItem('formData')) || [];
   let exist = formData.length &&
@@ -17,7 +17,6 @@ function signIn(e) {
     })
   }
   else {
-
     document.cookie = `${username}; expires=Thu, 18 Dec 2099 12:00:00 UTC`;
     localStorage.setItem('logged', `${username}`)
     window.open("../html/quiz-rules.html")

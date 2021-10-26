@@ -16,14 +16,16 @@ function logout() {
 }
 
 function oneTimeAttemptCheck() {
+  // get users from local storage
   const allUsers = JSON.parse(localStorage.getItem('formData'));
   const allUsersToPushAgain = [];
-  console.log("all", allUsers);
+  // console.log("all", allUsers);
   const loggedUser = localStorage.getItem(`logged`);
+  //foreach is easier when dealing with array of objects
   allUsers.forEach((element, index) => {
-    if (element.username === loggedUser)
+    if (element.username === loggedUser) // is loggedUser in my database ?
       if (element.attempt === true) {
-        console.log("TRUUUUE");
+        // console.log("TRUUUUE");
         Swal.fire({
           title: 'You already attempted the quiz!',
           text: "Attempts left: 0",
@@ -38,8 +40,8 @@ function oneTimeAttemptCheck() {
           }
         })
       }
-      else {
-        console.log("FAALSEE");
+      else { // first time attempt
+        // console.log("FAALSEE");
 
         element.attempt = true;
         window.location.href = "../html/quiz.html";

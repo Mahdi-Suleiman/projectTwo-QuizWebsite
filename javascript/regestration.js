@@ -3,20 +3,19 @@ const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
-const usernamePattern = /^[A-Za-z]{3,13}$/;
+const usernamePattern = /^[A-Za-z]{3,13}$/; //accept a certain pattern only
 
 
 form.addEventListener('submit', e => {
     e.preventDefault();
-
     checkInputs();
-
 });
+
 function logout() {
     sessionStorage.clear();
     localStorage.removeItem('logged');
     window.close();
-    window.open('../html/sign-in.html');
+    window.open('../html/index.html');
 }
 
 function checkInputs() {
@@ -111,7 +110,9 @@ const signUp = e => {
         );
 
     if (!exist) {
-        // get length of registered users
+        // todo :get length of registered users
+
+        // save users to local storage
         const attempt = false;
         formData.push({ username, email, password, attempt });
         localStorage.setItem(`formData`, JSON.stringify(formData));

@@ -22,6 +22,8 @@ let currentQuestionCounter = 0;
 // Functions
 function buildMyQuiz(myCounter) {
     // let localstorageCounter = 0;
+
+    //save all correct answers to Local storage
     myQuestions.forEach((currentQuestion, index) => {
         const savedAnswerInLocalstorage = JSON.stringify(currentQuestion.correctAnswer);
         localStorage.setItem(`Q${index + 1}`, savedAnswerInLocalstorage)
@@ -53,11 +55,13 @@ function showNextQuestion() {
     let userChoice = 0;
 
     let correctChoiceFromLocalstorage = JSON.parse(localStorage.getItem(`Q${currentQuestionCounter + 1}`));
+
     for (let index = 0; index < allRadio.length; index++) {
         if (allRadio[index].checked == true) {
             userChoice = allRadio[index];
-            currentQuestionCounter++;
             userChoice.checked = false;
+            currentQuestionCounter++;
+
             if (userChoice.value === correctChoiceFromLocalstorage) {
                 localStorage.setItem(`A${currentQuestionCounter}`, true)
             }
@@ -75,6 +79,7 @@ function showNextQuestion() {
 
     buildMyQuiz(currentQuestionCounter);
 }
+
 function submitExamButton() {
     window.open("../html/result-page.html", '_blank');
 }
