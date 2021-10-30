@@ -69,7 +69,6 @@ function showTable() {
     tableContainer.innerHTML = myTable.join('');
     document.querySelector("#results").innerHTML = `You answered ${counter} correct out of ${answersArray.length}!`;
     const tr = document.querySelector(".table-thead");
-
     if (counter >= (answersArray.length / 2)) {
         celebrate();
         h1.innerHTML = 'Pass!';
