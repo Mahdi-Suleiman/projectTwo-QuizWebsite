@@ -173,4 +173,7 @@ canvas {
     .connect i {
         margin: 0.5em 0;
     }
+    canvas {
+        height: 40em;
+    }
 }

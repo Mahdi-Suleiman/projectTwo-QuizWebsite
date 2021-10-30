@@ -9,8 +9,8 @@ const radio3 = document.querySelector("#answer3");
 const label3 = document.querySelector("#label3");
 const radio4 = document.querySelector("#answer4");
 const label4 = document.querySelector("#label4");
-// let usernameToShow = localStorage.getItem(`logged`);
 const nextButton = document.querySelector('.next');
+
 let currentQuestionCounter = 0;
 const myQuestions = [];
 

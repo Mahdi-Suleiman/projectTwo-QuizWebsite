@@ -21,8 +21,9 @@ function signIn(e) {
   else {
 
     // document.cookie = `${username}; expires=Thu, 18 Dec 2099 12:00:00 UTC`;
-    localStorage.setItem('logged', `${JSON.stringify(username.toLowerCase())}`)
-    window.open("../html/quiz-rules.html")
+    localStorage.setItem('logged', `${JSON.stringify(username.toLowerCase())}`);
+    window.location.href = "../html/quiz-rules.html";
+    // window.open("../html/quiz-rules.html");
   }
 }
 

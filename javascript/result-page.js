@@ -8,9 +8,12 @@ let counter = 0;
 // console.log(answersArray);
 
 function buildAnwersArray() {
-    for (let index = 0; index <= localStorage.length; index++) {
-        const eachUserAnswer = localStorage.getItem(`A${JSON.parse(index + 1)}`);
-        answersArray.push(JSON.parse(eachUserAnswer));
+
+    for (const localItem in localStorage) {
+        if (localItem.slice(0, 1) === `A`) {
+            const eachUserAnswer = localStorage.getItem(`${localItem}`);
+            answersArray.push(JSON.parse(eachUserAnswer));
+        }
     }
 }
 
@@ -18,6 +21,7 @@ function buildAnwersArray() {
 
 function showTable() {
     const myTable = [];
+    console.log(answersArray);
     myTable.push(`
     <thead>
 <tr class="table-thead">
@@ -30,7 +34,7 @@ function showTable() {
 </tr>
 </thead>`);
 
-    for (let index = 0; index < 10; index++) {
+    for (let index = 0; index < answersArray.length; index++) {
         if (answersArray[index] === true) {
             counter++;
             myTable.push(`
@@ -63,10 +67,10 @@ function showTable() {
 
     const tableContainer = document.querySelector(".table-container");
     tableContainer.innerHTML = myTable.join('');
-    document.querySelector("#results").innerHTML = `You answered ${counter} correct out of 10!`;
+    document.querySelector("#results").innerHTML = `You answered ${counter} correct out of ${answersArray.length}!`;
     const tr = document.querySelector(".table-thead");
 
-    if (counter >= 5) {
+    if (counter >= (answersArray.length / 2)) {
         celebrate();
         h1.innerHTML = 'Pass!';
         h1.style.color = 'green';
