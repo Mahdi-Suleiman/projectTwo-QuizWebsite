@@ -20,7 +20,7 @@
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 </head>
 
-<body onload="buildMyQuiz(); checkIfLogged(); showLoggedUsername();">
+<body onload=" checkIfLogged(); showLoggedUsername();buildMyQuiz();">
   <header>
     <nav>
       <!-- Logo -->
@@ -78,6 +78,7 @@
       <span><img src="../assets/logo1.png"></span>
     </div>
   </footer>
+  <script src="../json/questions.json"></script>
   <script src="../javascript/shared-script.js"></script>
   <script src="../javascript/quiz.js"></script>
 </body>

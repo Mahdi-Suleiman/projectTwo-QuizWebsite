@@ -46,6 +46,11 @@
   border-bottom: 1px solid #f0f0f0;
   background-color: #f7f7f7;
   padding: 0.5em 1em 0.5em 1.65em;
+  /* width: 70%; */
+}
+
+.quiz-title-container h3 {
+  width: 78%;
 }
 
 #report-a-problem-button {
@@ -55,6 +60,7 @@
   border: unset;
   color: white;
   border-radius: 4px;
+  width: 20%;
 }
 
 .quiz input {

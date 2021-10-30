@@ -9,16 +9,23 @@ const radio3 = document.querySelector("#answer3");
 const label3 = document.querySelector("#label3");
 const radio4 = document.querySelector("#answer4");
 const label4 = document.querySelector("#label4");
-
+// let usernameToShow = localStorage.getItem(`logged`);
 const nextButton = document.querySelector('.next');
 let currentQuestionCounter = 0;
+const myQuestions = [];
 
 // Functions
-function buildMyQuiz() {
-    // let localstorageCounter = 0;
+async function buildMyQuiz() {
+    myQuestions.length = 0;
+    const test = await fetch('../json/questions.json')
+        .then(response => response.json())
+        .then(data => data.forEach((element) => {
+            myQuestions.push(element)
+        }));
+    console.log("array", myQuestions);
+
     myQuestions.forEach((currentQuestion, index) => {
-        const savedAnswerInLocalstorage = JSON.stringify(currentQuestion.correctAnswer);
-        localStorage.setItem(`Q${index + 1}`, savedAnswerInLocalstorage)
+        localStorage.setItem(`Q${index + 1}`, currentQuestion.correctAnswer)
     })
 
     // save user's last choice.
@@ -26,20 +33,18 @@ function buildMyQuiz() {
     for (let localItem in localStorage) {
         let flag = localItem.slice(0, 1);
         if (flag === `A`) {
-            // localStorage.removeItem(`${localItem}`);
             currentQuestionCounter++;
         }
-    }
-    const myCounter = currentQuestionCounter;
 
-    // currentQuestionCounter = myCounter;
-    quizQuestion.innerHTML = myQuestions[myCounter].question;
-    label1.innerHTML = myQuestions[myCounter].answers.a;
-    label2.innerHTML = myQuestions[myCounter].answers.b;
-    label3.innerHTML = myQuestions[myCounter].answers.c;
-    label4.innerHTML = myQuestions[myCounter].answers.d;
-    if (currentQuestionCounter > 8) {
-        // document.querySelector('#submit-button').style.display = "inline-block";
+    }
+
+    quizQuestion.innerHTML = myQuestions[currentQuestionCounter].question;
+    label1.innerHTML = myQuestions[currentQuestionCounter].answers.a;
+    label2.innerHTML = myQuestions[currentQuestionCounter].answers.b;
+    label3.innerHTML = myQuestions[currentQuestionCounter].answers.c;
+    label4.innerHTML = myQuestions[currentQuestionCounter].answers.d;
+    console.log(myQuestions.length);
+    if (currentQuestionCounter >= myQuestions.length - 1) {
         nextButton.innerHTML = "Submit";
     }
 }
@@ -47,13 +52,13 @@ function buildMyQuiz() {
 function showNextQuestion() {
     let userChoice = 0;
 
-    let correctChoiceFromLocalstorage = JSON.parse(localStorage.getItem(`Q${currentQuestionCounter + 1}`));
+    correctChoice = myQuestions[currentQuestionCounter].correctAnswer;
     for (let index = 0; index < allRadio.length; index++) {
         if (allRadio[index].checked == true) {
             userChoice = allRadio[index];
             userChoice.checked = false;
             currentQuestionCounter++;
-            if (userChoice.value === correctChoiceFromLocalstorage) {
+            if (userChoice.value === correctChoice) {
                 localStorage.setItem(`A${currentQuestionCounter}`, `${JSON.stringify(true)}`)
                 console.log(currentQuestionCounter);
             }
@@ -62,24 +67,17 @@ function showNextQuestion() {
                 console.log(currentQuestionCounter);
 
             }
-            // break;
         }
     }
-    if (currentQuestionCounter === 9) {
-        // document.querySelector('#submit-button').style.display = "inline-block";
-        nextButton.innerHTML = "Submit";
-    }
-    else if (currentQuestionCounter === 10) {
+
+    if (currentQuestionCounter === myQuestions.length) {
         window.close();
         window.open("../html/result.html", '_blank');
     }
 
-    buildMyQuiz(currentQuestionCounter);
+    buildMyQuiz();
 }
-// function submitExamButton() {
-//     // window.close();
-//     // window.open("../html/result.html", '_blank');
-// }
+
 async function reportProblem() {
     const { value: formValues } = await Swal.fire({
         title: 'Report a problem',
@@ -88,6 +86,8 @@ async function reportProblem() {
             `<input id="swal-input1" class="swal2-input" placeholder="Report question ${currentQuestionCounter + 1}" readonly>` +
             '<textarea id="swal-input3" class="swal2-textarea" placeholder="Write your message..."></textarea>',
         focusConfirm: false,
+        allowEscapeKey: false,
+        allowOutsideClick: false,
         preConfirm: () => {
             return [
                 document.getElementById('swal-input3').value
@@ -96,6 +96,7 @@ async function reportProblem() {
     })
 
     if (formValues != '') {
+        localStorage.setItem(`userReportQ${currentQuestionCounter}`, `${JSON.stringify(formValues)}`)
         Swal.fire(
             {
                 icon: 'success',
@@ -115,108 +116,110 @@ async function reportProblem() {
     }
 }
 
-const myQuestions = [
-    {
-        question: "how to do comment in css?",
-        answers: {
-            a: "/* This is a single-line comment */",
-            b: "/ This is a single-line comment /*",
-            c: "<-- This is a single-line comment -->",
-            d: "--< This is a single-line comment >--"
-        },
-        correctAnswer: "a",
-    },
-    {
-        question: "Which of the following allows specifying styles for the visual elements of the website ?",
-        answers: {
-            a: "Cascading Style sheets",
-            b: "Web page",
-            c: "Form",
-            d: "Animation"
-        },
-        correctAnswer: "a",
-    },
-    {
-        question: "Which of the following is known as special symbol in the syntax of CSS ?",
-        answers: {
-            a: "Selector",
-            b: "Declaration",
-            c: "Rules",
-            d: "Input"
-        },
-        correctAnswer: "c",
+// const myQuestions = [
+//     {
+//         question: "how to do comment in css?",
+//         answers: {
+//             a: "/* This is a single-line comment */",
+//             b: "/ This is a single-line comment /*",
+//             c: "<-- This is a single-line comment -->",
+//             d: "--< This is a single-line comment >--"
+//         },
+//         correctAnswer: "a",
+//     },
+//     {
+//         question: "Which of the following allows specifying styles for the visual elements of the website ?",
+//         answers: {
+//             a: "Cascading Style sheets",
+//             b: "Web page",
+//             c: "Form",
+//             d: "Animation"
+//         },
+//         correctAnswer: "a",
+//     },
+//     {
+//         question: "Which of the following is known as special symbol in the syntax of CSS ?",
+//         answers: {
+//             a: "Selector",
+//             b: "Declaration",
+//             c: "Rules",
+//             d: "Input"
+//         },
+//         correctAnswer: "c",
 
-    },
-    {
-        question: "Which of the following are two main parts of CSS rule ?",
-        answers: {
-            a: "Select, declaration",
-            b: "Selector, declare",
-            c: "Selection, declaration",
-            d: "Selector, declaration"
-        },
-        correctAnswer: "b",
-    },
-    {
-        question: "Which of the following is an HTML element on which style can be applied ?",
-        answers: {
-            a: "Declaration",
-            b: "Selector",
-            c: "Select",
-            d: "Declare"
-        },
-        correctAnswer: "c",
+//     },
+//     {
+//         question: "Which of the following are two main parts of CSS rule ?",
+//         answers: {
+//             a: "Select, declaration",
+//             b: "Selector, declare",
+//             c: "Selection, declaration",
+//             d: "Selector, declaration"
+//         },
+//         correctAnswer: "b",
+//     },
+//     {
+//         question: "Which of the following is an HTML element on which style can be applied ?",
+//         answers: {
+//             a: "Declaration",
+//             b: "Selector",
+//             c: "Select",
+//             d: "Declare"
+//         },
+//         correctAnswer: "c",
 
-    },
-    {
-        question: "Which of the following is the syntax of CSS ?",
-        answers: {
-            a: "elect {property : value}",
-            b: "Selector {value : property}",
-            c: "Selector {property : value}",
-            d: "Selection {property : value}"
-        },
-        correctAnswer: "c",
+//     },
+//     {
+//         question: "Which of the following is the syntax of CSS ?",
+//         answers: {
+//             a: "elect {property : value}",
+//             b: "Selector {value : property}",
+//             c: "Selector {property : value}",
+//             d: "Selection {property : value}"
+//         },
+//         correctAnswer: "c",
 
-    },
-    {
-        question: "Which of the following is a scripting language that allows adding programming to web pages ?",
-        answers: {
-            a: "Action script",
-            b: "JavaScript",
-            c: "HTML",
-            d: "CSS"
-        },
-        correctAnswer: "b",
-    },
-    {
-        question: "Which of the following is a scripting language that is simple, lightweight programming language that does not contain advanced programming functionalities ?",
-        answers: {
-            a: "JavaScript",
-            b: "HTML",
-            c: "C",
-            d: "Java"
-        },
-        correctAnswer: "a",
-    },
-    {
-        question: "Which one of these is a JavaScript package manager?",
-        answers: {
-            a: "Node.js",
-            b: "TypeScript",
-            c: "npm",
-            d: "asp.net"
-        },
-        correctAnswer: "c"
-    },
-    {
-        question: "Which of the following symbol signifies the start and end of a JavaScript block ?",
-        answers: {
-            a: "Semicolon",
-            b: "Square bracket",
-            c: "Curly bracket",
-            d: "Round bracket"
-        },
-        correctAnswer: "c",
-    }
-];
+//     },
+//     {
+//         question: "Which of the following is a scripting language that allows adding programming to web pages ?",
+//         answers: {
+//             a: "Action script",
+//             b: "JavaScript",
+//             c: "HTML",
+//             d: "CSS"
+//         },
+//         correctAnswer: "b",
+//     },
+//     {
+//         question: "Which of the following is a scripting language that is simple, lightweight programming language that does not contain advanced programming functionalities ?",
+//         answers: {
+//             a: "JavaScript",
+//             b: "HTML",
+//             c: "C",
+//             d: "Java"
+//         },
+//         correctAnswer: "a",
+//     },
+//     {
+//         question: "Which one of these is a JavaScript package manager?",
+//         answers: {
+//             a: "Node.js",
+//             b: "TypeScript",
+//             c: "npm",
+//             d: "asp.net"
+//         },
+//         correctAnswer: "c"
+//     },
+//     {
+//         question: "Which of the following symbol signifies the start and end of a JavaScript block ?",
+//         answers: {
+//             a: "Semicolon",
+//             b: "Square bracket",
+//             c: "Curly bracket",
+//             d: "Round bracket"
+//         },
+//         correctAnswer: "c",
+//     }
+// ];
+
+// console.log(JSON.stringify(myQuestions));

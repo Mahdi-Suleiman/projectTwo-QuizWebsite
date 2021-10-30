@@ -1,6 +1,6 @@
 let loggedUser = JSON.parse(localStorage.getItem(`logged`));
 let logoutButton = document.querySelector(`#logoutButton`);
-
+let usernameToShow = '';
 function logout() {
     sessionStorage.clear();
     localStorage.removeItem('logged');
@@ -30,7 +30,7 @@ function goToRegisteration() {
 function showLoggedUsername() {
     if (checkIfLogged()) {
         const welcomingTag = document.querySelector(".logged-username-container");
-        let usernameToShow = loggedUser.slice(0, 1).toUpperCase();
+        usernameToShow = loggedUser.slice(0, 1).toUpperCase();
         usernameToShow = usernameToShow.concat('', loggedUser.slice(1).toLowerCase())
         welcomingTag.innerHTML = `Welcome ${usernameToShow}`;
     }
@@ -56,7 +56,7 @@ function checkIfLogged() {
         })
     }
     else {
-        console.log("welcome");
+        // console.log("welcome");
         return true;
     }
 }
