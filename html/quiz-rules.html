@@ -9,9 +9,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="../assets/logo1.png">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-  <link rel="stylesheet" href="../css/quiz-rules-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../css/shared-style.css">
+  <link rel="stylesheet" href="../css/quiz-rules.css">
   <!-- sweet alert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
@@ -19,22 +21,27 @@
   <title>GAMAR Quiz</title>
 </head>
 
-<body>
+<body onload="checkIfLogged(); showLoggedUsername();">
   <header>
-    <nav class="navbar">
+    <nav>
       <!-- Logo -->
-      <div>
-        <img src="../assets/logo1.png" alt="logo">
+      <div class="logo-container">
+        <a href="#">
+          <abbr title="">
+            <img src="../assets/logo1.png" alt="logo">
+          </abbr>
+        </a>
       </div>
-      <div id="welcomingTag">
+      <div class="logged-username-container">
         <!-- User Welcome -->
       </div>
       <!-- Sign-in Sign up Buttons -->
-      <div class="nav-btns">
-        <button onclick="logout()">Logout</button>
+      <div class="navbar-buttons">
+        <button id="logoutButton" onclick="logout()">Logout</button>
       </div>
     </nav>
   </header>
+
   <main class="container">
     <div class="quiz-attempt">
       <h2>Exam Brief: You are currently attempting a quiz for posotion: <span>Front-end developer</span></h2>
@@ -52,18 +59,17 @@
     </button>
   </main>
   <footer>
-    <div class="end-section">
-      <div class="connect">
-        <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fab fa-twitter-square"></i></a>
-      </div>
-      <div class="copy">
-        <p>Copyright ©2021 All rights reserved | This website is powered by</p>
-        <span><img src="../assets/logo1.png"></span>
-      </div>
+    <div class="connect-with-us">
+      <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fa-brands fa-github-alt"></i></a>
+      <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+    </div>
+    <div class="copyright">
+      <p>Copyright ©2021 All rights reserved | This website is powered by</p>
+      <span><img src="../assets/logo1.png"></span>
     </div>
   </footer>
+  <script src="../javascript/shared-script.js"></script>
   <script src="../javascript/quiz-rules.js"></script>
 </body>
 

@@ -1,7 +1,16 @@
-* {
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
+nav {
+    background-color: unset;
+    filter: unset;
+}
+
+footer {
+    background-color: unset;
+    filter: unset;
+}
+
+.navbar-buttons button {
+    background-color: white;
+    color: black;
 }
 
 table tr td {
@@ -13,7 +22,6 @@ table tr td {
 }
 
 #show-hide-button {
-    /* border: 1px solid black; */
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     font-weight: lighter;
@@ -30,11 +38,6 @@ button {
     border: none;
 }
 
-button:hover {
-    filter: brightness(80%);
-    cursor: pointer;
-}
-
 .main-section {
     display: flex;
     flex-direction: column;
@@ -46,50 +49,6 @@ button:hover {
 
 #submit-button {
     display: none;
-}
-
-body {
-    font-family: 'Open Sans', sans-serif;
-    /* background-image:url(./wave-removebg.png);
-background-position: center;
-background-size:cover; */
-}
-
-/* Navbar */
-
-nav {
-    background-color: #B8293D;
-}
-
-.navbar {
-    background-color: #B8293D;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.navbar img {
-    width: 6em;
-    height: 3em;
-    margin-left: 1em;
-}
-
-.nav-btns {
-    display: flex;
-    /* width: 30%; */
-    padding: 1em;
-    justify-content: flex-end;
-}
-
-.nav-btns button {
-    margin: 0 0.5em;
-    padding: 0.5em 1em;
-    border-radius: 0.3em;
-    cursor: pointer;
-    background-color: white;
-    font-weight: bold;
-    color: black;
-    border: none;
 }
 
 /* body */
@@ -159,52 +118,6 @@ nav {
     color: white;
     cursor: pointer;
     border-radius: 4px;
-}
-
-/* Footer */
-
-footer {
-    background-color: #B8293D;
-}
-
-.end-section {
-    background-color: #B8293D;
-    text-align: center;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-}
-
-.end-section img {
-    width: 4em;
-    height: 2em;
-}
-
-.connect {
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    width: 50%;
-    justify-content: space-between;
-    /* margin: 1em 0; */
-    /* margin-top: 1em; */
-}
-
-.connect i {
-    font-size: 2em;
-    margin: 1em 0;
-    color: white;
-}
-
-.copy {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
-
-body {
-    position: relative;
 }
 
 button {

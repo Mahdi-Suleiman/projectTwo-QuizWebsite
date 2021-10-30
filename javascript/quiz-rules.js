@@ -1,29 +1,13 @@
-const btn = document.querySelector('.quiz-btn');
-const quizRules = document.querySelector('.quiz-rules');
-const quiz = document.querySelector('.quiz');
+loggedUser = JSON.parse(localStorage.getItem(`logged`));
+logoutButton = document.querySelector(`#logoutButton`);
 
-const welcomingTag = document.querySelector("#welcomingTag");
-const usernameFromCookies = document.cookie;
-let usernameToShow = usernameFromCookies.slice(0, 1).toUpperCase();
-usernameToShow = usernameToShow.concat('', usernameFromCookies.slice(1).toLowerCase())
-welcomingTag.innerHTML = `Welcome ${usernameToShow}`;
-
-function logout() {
-  sessionStorage.clear();
-  localStorage.removeItem('logged');
-  window.close();
-  window.open('../html/index.html', '_blank');
-}
 
 function oneTimeAttemptCheck() {
-  // get users from local storage
-  const allUsers = JSON.parse(localStorage.getItem('formData'));
+  const allUsers = JSON.parse(localStorage.getItem('usersData'));
   const allUsersToPushAgain = [];
-  // console.log("all", allUsers);
-  const loggedUser = localStorage.getItem(`logged`);
-  //foreach is easier when dealing with array of objects
+  console.log("all", allUsers);
   allUsers.forEach((element, index) => {
-    if (element.username === loggedUser) // is loggedUser in my database ?
+    if (element.username === loggedUser)
       if (element.attempt === true) {
         // console.log("TRUUUUE");
         Swal.fire({
@@ -31,16 +15,18 @@ function oneTimeAttemptCheck() {
           text: "Attempts left: 0",
           icon: 'warning',
           showCancelButton: true,
-          confirmButtonColor: '#3085d6',
+          confirmButtonColor: '#1877F2',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Logout'
+          confirmButtonText: 'Logout',
+          allowEscapeKey: false,
+          allowOutsideClick: false
         }).then((result) => {
           if (result.isConfirmed) {
             logout()
           }
         })
       }
-      else { // first time attempt
+      else {
         // console.log("FAALSEE");
 
         element.attempt = true;
@@ -48,6 +34,6 @@ function oneTimeAttemptCheck() {
       }
     allUsersToPushAgain.push(element);
   });
-  localStorage.removeItem("formData");
-  localStorage.setItem("formData", JSON.stringify(allUsersToPushAgain));
+  localStorage.removeItem("usersData");
+  localStorage.setItem("usersData", JSON.stringify(allUsersToPushAgain));
 }

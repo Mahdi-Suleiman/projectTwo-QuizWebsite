@@ -10,9 +10,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GAMAR Registration</title>
   <link rel="shortcut icon" href="../assets/logo1.png">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-  <link rel="stylesheet" href="../css/registration-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../css/shared-style.css">
+  <link rel="stylesheet" href="../css/registration.css">
   <!-- sweet alert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
@@ -21,18 +23,22 @@
 
 <body>
   <header>
-    <nav class="navbar">
+    <nav>
       <!-- Logo -->
-      <div>
-        <img src="../assets/logo1.png" alt="logo">
+      <div class="logo-container">
+        <a href="../html/index.html">
+          <abbr title="Go To Home Page">
+            <img src="../assets/logo1.png" alt="logo">
+          </abbr>
+        </a>
       </div>
-      <!-- User Welcome -->
-      <div>
-
+      <div class="logged-username-container">
+        <!-- User Welcome -->
       </div>
       <!-- Sign-in Sign up Buttons -->
-      <div class="nav-btns">
-        <button onclick="logout()">Login</button>
+      <div class="navbar-buttons">
+        <button onclick="goToLogin()">Login</button>
+        <!-- <button>Sign out</button> -->
       </div>
     </nav>
   </header>
@@ -75,19 +81,19 @@
     </div>
   </main>
   <footer>
-    <div class="end-section">
-      <div class="connect">
-        <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fab fa-twitter-square"></i></a>
-      </div>
-      <div class="copy">
-        <p>Copyright ©2021 All rights reserved | This website is powered by</p>
-        <span><img src="../assets/logo1.png"></span>
-      </div>
+    <div class="connect-with-us">
+      <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fa-brands fa-github-alt"></i></a>
+      <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+    </div>
+    <div class="copyright">
+      <p>Copyright ©2021 All rights reserved | This website is powered by</p>
+      <span><img src="../assets/logo1.png"></span>
     </div>
   </footer>
+  <script src="../javascript/shared-script.js"></script>
   <script src="../javascript/regestration.js"></script>
+
 </body>
 
 </html>

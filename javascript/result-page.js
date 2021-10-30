@@ -1,21 +1,18 @@
-const navbar = document.querySelector(".navbar");
-const footer = document.querySelector(".end-section");
+
+const navbar = document.querySelector("nav");
+const footer = document.querySelector("footer");
 const answersArray = [];
 const h1 = document.querySelector("#pass-fail-div");
 let counter = 0;
 
-//move correct answers from local storage to session storage
-for (let index = 0; index < 10; index++) {
-    const element = localStorage.getItem(`A${index + 1}`);
-    JSON.stringify(element);
-    sessionStorage.setItem(`A${index}`, element);
-    localStorage.removeItem(`A${index + 1}`);
-}
-for (let index = 0; index < 10; index++) {
-    const element = sessionStorage.getItem(`A${index + 1}`);
-    answersArray.push(JSON.parse(element));
-}
 // console.log(answersArray);
+
+function buildAnwersArray() {
+    for (let index = 0; index <= localStorage.length; index++) {
+        const eachUserAnswer = localStorage.getItem(`A${JSON.parse(index + 1)}`);
+        answersArray.push(JSON.parse(eachUserAnswer));
+    }
+}
 
 
 
@@ -59,7 +56,8 @@ function showTable() {
         }
     }
 
-    myTable.unshift(`<table class="styled-table" style="display: table;">`);
+    myTable.unshift(`<table class="styled-table" style="display: table; visibility: visible;
+    ">`);
     myTable.push(`</table>`);
 
 
@@ -75,6 +73,8 @@ function showTable() {
         navbar.style.backgroundColor = "green";
         footer.style.backgroundColor = "green";
         tr.style.backgroundColor = "green";
+        navbar.style.filter = "drop-shadow(0 0px 6px green)";
+        footer.style.filter = "drop-shadow(0 0px 6px green)";
     }
     else {
         h1.innerHTML = 'Failed!';
@@ -82,24 +82,22 @@ function showTable() {
         navbar.style.backgroundColor = "#B8293D";
         footer.style.backgroundColor = "#B8293D";
         tr.style.backgroundColor = `#B8293D`;
+        navbar.style.filter = "drop-shadow(0 0px 6px #B8293D)";
+        footer.style.filter = "drop-shadow(0 0px 6px #B8293D)";
+
+
     }
 }
 function toggleResult() {
     const table = document.querySelector("table");
-    if (table.style.display === "table") {
-        table.style.display = "none";
+    if (table.style.visibility === "visible") {
+        table.style.visibility = "hidden";
     }
     else {
-        table.style.display = "table";
+        table.style.visibility = "visible";
     }
 }
 
-function logout() {
-    sessionStorage.clear();
-    localStorage.removeItem('logged');
-    window.close();
-    window.open('../html/index.html', '_blank');
-}
 
 /* celebration */
 function celebrate() {

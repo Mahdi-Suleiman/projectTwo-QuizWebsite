@@ -12,30 +12,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
         integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/result-page.css">
+    <link rel="stylesheet" href="../css/shared-style.css">
+    <link rel="stylesheet" href="../css/result.css">
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@0.9.0/dist/js-confetti.browser.js"></script>
 </head>
 
-<body onload="showTable()">
+<body onload="buildAnwersArray(); showTable(); showLoggedUsername();">
 
     <header>
-        <nav class="navbar">
+        <nav>
             <!-- Logo -->
-            <div>
-                <img src="../assets/logo1.png" alt="logo">
+            <div class="logo-container">
+                <a href="#">
+                    <abbr title="">
+                        <img src="../assets/logo1.png" alt="logo">
+                    </abbr>
+                </a>
             </div>
-            <!-- User Welcome -->
-            <div>
-
+            <div class="logged-username-container">
+                <!-- User Welcome -->
             </div>
             <!-- Sign-in Sign up Buttons -->
-            <div class="nav-btns">
+            <div class="navbar-buttons">
                 <button onclick="logout()">Logout</button>
+                <!-- <button>Sign out</button> -->
             </div>
         </nav>
     </header>
-
     <canvas id="custom_canvas"></canvas>
     <!-- <button onclick="logout()">Logout</button> -->
     </div>
@@ -51,18 +55,17 @@
 
 
     <footer>
-        <div class="end-section">
-            <div class="connect">
-                <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fab fa-twitter-square"></i></a>
-            </div>
-            <div class="copy">
-                <p>Copyright ©2021 All rights reserved | This website is powered by</p>
-                <span><img src="../assets/logo1.png"></span>
-            </div>
+        <div class="connect-with-us">
+            <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fa-brands fa-github-alt"></i></a>
+            <a href="https://twitter.com/mahdisuleiman0" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+        <div class="copyright">
+            <p>Copyright ©2021 All rights reserved | This website is powered by</p>
+            <span><img src="../assets/logo1.png"></span>
         </div>
     </footer>
+    <script src="../javascript/shared-script.js"></script>
     <script src="../javascript/result-page.js"></script>
 </body>
 

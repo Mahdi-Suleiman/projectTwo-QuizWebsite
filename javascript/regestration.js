@@ -3,20 +3,19 @@ const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
-const usernamePattern = /^[A-Za-z]{3,13}$/; //accept a certain pattern only
+const usernamePattern = /^[A-Za-z]{3,13}$/;
 
 
+form.addEventListener('keyup', e => {
+    e.preventDefault();
+    checkInputs()
+});
 form.addEventListener('submit', e => {
     e.preventDefault();
-    checkInputs();
+    if (checkInputs())
+        signUp();
 });
 
-function logout() {
-    sessionStorage.clear();
-    localStorage.removeItem('logged');
-    window.close();
-    window.open('../html/index.html');
-}
 
 function checkInputs() {
     // trim to remove the whitespaces
@@ -26,59 +25,76 @@ function checkInputs() {
     const password2Value = password2.value.trim();
 
     const flags = [];
-
+    //
     if (usernameValue === '') {
         setErrorFor(username, 'Username cannot be blank');
+        flags.push(false);
     } else {
         setSuccessFor(username);
         flags.push(true);
     }
-
+    //
     if (emailValue === '') {
         setErrorFor(email, 'Email cannot be blank');
+        flags.push(false);
+
     } else if (!isEmail(emailValue)) {
         setErrorFor(email, 'Not a valid email');
+        flags.push(false);
+
     } else {
         setSuccessFor(email);
         flags.push(true);
 
     }
 
+    //
     if (passwordValue === '') {
         setErrorFor(password, 'Password cannot be blank');
+        flags.push(false);
+
+    } else if (passwordValue.length < 6) {
+
+        setErrorFor(password, 'Password cannot be less than 6 characters');
+        flags.push(false);
+
     } else {
         setSuccessFor(password);
         flags.push(true);
-
     }
-
+    //
     if (password2Value === '') {
-        setErrorFor(password2, 'Password2 cannot be blank');
-    } else if (passwordValue !== password2Value) {
-        setErrorFor(password2, 'Passwords does not match');
+        setErrorFor(password2, 'Password cannot be blank');
+        flags.push(false);
+
+    } else if (password2Value.length < 6) {
+
+        flags.push(false);
+        setErrorFor(password2, 'Password cannot be less than 6 characters');
     } else {
         setSuccessFor(password2);
         flags.push(true);
-
-    }
-    if (passwordValue.length < 6) {
-        setErrorFor(password, 'Password cannot be less6');
-    } else {
-        setSuccessFor(password);
-        flags.push(true);
-
-    }
-    if (password2Value.length < 6) {
-        setErrorFor(password2, 'Password cannot be less6');
-    } else {
-        setSuccessFor(password);
-        flags.push(true);
     }
 
-    if (flags.length === 6) {
-        signUp();
+    if (passwordValue !== password2Value) {
+        setErrorFor(password2, 'Passwords do not match');
+        flags.push(false);
     }
 
+
+
+    console.log(flags);
+    // let flag = true;
+    // if any flag is false, return false;
+    for (let index = 0; index < flags.length; index++) {
+        if (flags[index] === false) {
+            // flag = false;
+            return false;
+            // break;
+        }
+    }
+    //if every flag is true return true;
+    return true;
 }
 
 function setErrorFor(input, message) {
@@ -101,23 +117,22 @@ const signUp = e => {
     let username = document.getElementById('username').value;
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
+    const form = document.querySelector('form');
 
-    let formData = JSON.parse(localStorage.getItem('formData')) || [];
+    let usersData = JSON.parse(localStorage.getItem('usersData')) || [];
 
-    let exist = formData.length &&
-        JSON.parse(localStorage.getItem('formData')).some(data =>
+    let exist = usersData.length &&
+        JSON.parse(localStorage.getItem('usersData')).some(data =>
             data.username.toLowerCase() == username.toLowerCase()
         );
 
     if (!exist) {
-        // todo :get length of registered users
-
-        // save users to local storage
+        // get length of registered users
         const attempt = false;
-        formData.push({ username, email, password, attempt });
-        localStorage.setItem(`formData`, JSON.stringify(formData));
-        document.querySelector('form').reset();
-        document.getElementById('username').focus();
+        usersData.push({ username, email, password, attempt });
+        localStorage.setItem(`usersData`, JSON.stringify(usersData));
+        form.reset();
+        // username.focus();
         Swal.fire(
             'Good job!',
             'Account Created!',

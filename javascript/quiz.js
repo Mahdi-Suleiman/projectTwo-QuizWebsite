@@ -1,9 +1,3 @@
-const welcomingTag = document.querySelector("#welcomingTag");
-const usernameFromCookies = document.cookie;
-let usernameToShow = usernameFromCookies.slice(0, 1).toUpperCase();
-usernameToShow = usernameToShow.concat('', usernameFromCookies.slice(1).toLowerCase())
-welcomingTag.innerHTML = `Welcome ${usernameToShow}`;
-
 //variables
 const quizQuestion = document.querySelector("h3");
 const allRadio = document.querySelectorAll(".my-radio");
@@ -20,68 +14,105 @@ const nextButton = document.querySelector('.next');
 let currentQuestionCounter = 0;
 
 // Functions
-function buildMyQuiz(myCounter) {
+function buildMyQuiz() {
     // let localstorageCounter = 0;
-
-    //save all correct answers to Local storage
     myQuestions.forEach((currentQuestion, index) => {
         const savedAnswerInLocalstorage = JSON.stringify(currentQuestion.correctAnswer);
         localStorage.setItem(`Q${index + 1}`, savedAnswerInLocalstorage)
     })
 
-    currentQuestionCounter = myCounter;
+    // save user's last choice.
+    currentQuestionCounter = 0;
+    for (let localItem in localStorage) {
+        let flag = localItem.slice(0, 1);
+        if (flag === `A`) {
+            // localStorage.removeItem(`${localItem}`);
+            currentQuestionCounter++;
+        }
+    }
+    const myCounter = currentQuestionCounter;
+
+    // currentQuestionCounter = myCounter;
     quizQuestion.innerHTML = myQuestions[myCounter].question;
     label1.innerHTML = myQuestions[myCounter].answers.a;
     label2.innerHTML = myQuestions[myCounter].answers.b;
     label3.innerHTML = myQuestions[myCounter].answers.c;
     label4.innerHTML = myQuestions[myCounter].answers.d;
-
-    radio1.setAttribute(`value`, "a");
-    radio2.setAttribute(`value`, "b");
-    radio3.setAttribute(`value`, "c");
-    radio4.setAttribute(`value`, "d");
-
-    // console.log(myCounter);
-    // console.log("BuildMyQuiz");
-
+    if (currentQuestionCounter > 8) {
+        // document.querySelector('#submit-button').style.display = "inline-block";
+        nextButton.innerHTML = "Submit";
+    }
 }
-function logout() {
-    sessionStorage.clear();
-    localStorage.removeItem('logged');
-    window.close();
-    window.open('../html/index.html', '_blank');
-}
+
 function showNextQuestion() {
     let userChoice = 0;
 
     let correctChoiceFromLocalstorage = JSON.parse(localStorage.getItem(`Q${currentQuestionCounter + 1}`));
-
     for (let index = 0; index < allRadio.length; index++) {
         if (allRadio[index].checked == true) {
             userChoice = allRadio[index];
             userChoice.checked = false;
             currentQuestionCounter++;
-
             if (userChoice.value === correctChoiceFromLocalstorage) {
-                localStorage.setItem(`A${currentQuestionCounter}`, true)
+                localStorage.setItem(`A${currentQuestionCounter}`, `${JSON.stringify(true)}`)
+                console.log(currentQuestionCounter);
             }
             else {
-                localStorage.setItem(`A${currentQuestionCounter}`, false)
+                localStorage.setItem(`A${currentQuestionCounter}`, `${JSON.stringify(false)}`)
+                console.log(currentQuestionCounter);
 
             }
             // break;
         }
     }
     if (currentQuestionCounter === 9) {
-        document.querySelector('#submit-button').style.display = "inline-block";
-        nextButton.style.display = "none";
+        // document.querySelector('#submit-button').style.display = "inline-block";
+        nextButton.innerHTML = "Submit";
+    }
+    else if (currentQuestionCounter === 10) {
+        window.close();
+        window.open("../html/result.html", '_blank');
     }
 
     buildMyQuiz(currentQuestionCounter);
 }
+// function submitExamButton() {
+//     // window.close();
+//     // window.open("../html/result.html", '_blank');
+// }
+async function reportProblem() {
+    const { value: formValues } = await Swal.fire({
+        title: 'Report a problem',
+        html:
+            `<input id="swal-input1" class="swal2-input" placeholder="${usernameToShow}" readonly>` +
+            `<input id="swal-input1" class="swal2-input" placeholder="Report question ${currentQuestionCounter + 1}" readonly>` +
+            '<textarea id="swal-input3" class="swal2-textarea" placeholder="Write your message..."></textarea>',
+        focusConfirm: false,
+        preConfirm: () => {
+            return [
+                document.getElementById('swal-input3').value
+            ]
+        }
+    })
 
-function submitExamButton() {
-    window.open("../html/result-page.html", '_blank');
+    if (formValues != '') {
+        Swal.fire(
+            {
+                icon: 'success',
+                title: 'Success',
+                text: 'Your report has been sent!',
+                showConfirmButton: false,
+                timer: '1500'
+            }
+        )
+    }
+    else {
+        Swal.fire({
+            icon: 'info',
+            title: 'Oops...',
+            text: 'Your message was empty!'
+        })
+    }
 }
 
 const myQuestions = [
